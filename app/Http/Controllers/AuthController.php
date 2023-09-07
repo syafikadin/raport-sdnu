@@ -61,7 +61,6 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'username' => 'required|exists:user',
             'password' => 'required|min:6',
-            'kurikulum' => 'required',
             'tahun_pelajaran' => 'required',
         ]);
         if ($validator->fails()) {
@@ -84,7 +83,6 @@ class AuthController extends Controller
                     $cek_riwayat->update(['status_login' => true]);
                 }
                 session([
-                    'kurikulum' => $request->kurikulum,
                     'tapel_id' => $request->tahun_pelajaran,
                 ]);
 
